@@ -1,5 +1,5 @@
 /**
- * Flux v3.1.1
+ * Flux v3.1.2
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -55,7 +55,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright (c) 2014-present, Facebook, Inc.
@@ -70,9 +70,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports.Dispatcher = __webpack_require__(1);
 
-/***/ },
+/***/ }),
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright (c) 2014-present, Facebook, Inc.
@@ -310,9 +310,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = Dispatcher;
 
-/***/ },
+/***/ }),
 /* 2 */
-/***/ function(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 	/**
 	 * Copyright (c) 2013-present, Facebook, Inc.
@@ -337,12 +337,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * will remain to ensure logic does not differ in production.
 	 */
 
-	function invariant(condition, format, a, b, c, d, e, f) {
-	  if (true) {
+	var validateFormat = function validateFormat(format) {};
+
+	if (true) {
+	  validateFormat = function validateFormat(format) {
 	    if (format === undefined) {
 	      throw new Error('invariant requires an error message argument');
 	    }
-	  }
+	  };
+	}
+
+	function invariant(condition, format, a, b, c, d, e, f) {
+	  validateFormat(format);
 
 	  if (!condition) {
 	    var error;
@@ -364,7 +370,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	module.exports = invariant;
 
-/***/ }
+/***/ })
 /******/ ])
 });
 ;
